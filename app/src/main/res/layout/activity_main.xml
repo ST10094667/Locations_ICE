@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/back_psc">
 
     <Button
         android:id="@+id/btnLocation"
@@ -32,8 +33,9 @@
 
     <TextView
         android:id="@+id/txtOutput"
-        android:layout_width="292dp"
-        android:layout_height="105dp"
+        android:layout_width="288dp"
+        android:layout_height="60dp"
+        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
