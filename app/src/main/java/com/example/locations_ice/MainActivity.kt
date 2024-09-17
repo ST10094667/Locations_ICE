@@ -71,11 +71,17 @@ class MainActivity : AppCompatActivity(), LocationListener {
     override fun onLocationChanged(location: Location) {
         /*txtlocation = findViewById(R.id.txtOutput)
         txtlocation.text = "Latitude: " + location.latitude + ", \nLongitude: " + location.longitude*/
-        val latitude = location.latitude
+        /*val latitude = location.latitude
         val longitude = location.longitude
         getAddressFromLocation(location)
-        getNearbyPlaces(latitude, longitude)
+        getNearbyPlaces(latitude, longitude)*/
+
+        txtlocation = findViewById(R.id.txtOutput)
+        val latitude = location.latitude
+        val longitude = location.longitude
+        txtlocation.text = "Latitude: $latitude, \nLongitude: $longitude"
     }
+
     private fun getAddressFromLocation(location: Location)
     {
         val geocoder = Geocoder(this, Locale.getDefault())
@@ -97,6 +103,7 @@ class MainActivity : AppCompatActivity(), LocationListener {
             txtlocation.text = "Error getting address"
         }
     }
+
     fun getNearbyPlaces(latitude: Double, longitude: Double) {
         val executor = Executors.newSingleThreadScheduledExecutor()
         executor.execute {
