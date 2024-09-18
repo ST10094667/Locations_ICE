@@ -3,6 +3,7 @@ package com.example.locations_ice
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.BitmapFactory
 import android.location.Geocoder
 import android.location.Location
 import android.location.LocationListener
@@ -10,8 +11,10 @@ import android.location.LocationManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -20,6 +23,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.github.kittinunf.fuel.Fuel
 import java.io.IOException
 import java.net.HttpURLConnection
 import java.net.URL
@@ -31,8 +35,9 @@ class MainActivity : AppCompatActivity(), LocationListener {
     private lateinit var locationManager: LocationManager
     private var locationPermissionCode = 1
     private lateinit var txtlocation: TextView
-
-
+    private lateinit var txtName: TextView
+   // private var latitude: Double = 0.0
+   // private var longitude: Double = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,13 +78,15 @@ class MainActivity : AppCompatActivity(), LocationListener {
         txtlocation.text = "Latitude: " + location.latitude + ", \nLongitude: " + location.longitude*/
         /*val latitude = location.latitude
         val longitude = location.longitude
-        getAddressFromLocation(location)
-        getNearbyPlaces(latitude, longitude)*/
+        getAddressFromLocation(location)*/
+
 
         txtlocation = findViewById(R.id.txtOutput)
-        val latitude = location.latitude
-        val longitude = location.longitude
+         val latitude = location.latitude
+         val longitude = location.longitude
         txtlocation.text = "Latitude: $latitude, \nLongitude: $longitude"
+        getNearbyPlaces()
+
     }
 
     private fun getAddressFromLocation(location: Location)
@@ -104,28 +111,31 @@ class MainActivity : AppCompatActivity(), LocationListener {
         }
     }
 
-    fun getNearbyPlaces(latitude: Double, longitude: Double) {
+    fun getNearbyPlaces() {
         val executor = Executors.newSingleThreadScheduledExecutor()
         executor.execute {
             try {
-                val apiKey = "AIzaSyCBQMtPiU7Jilayud7o1R9cO8niMIn-2-s"
-                val url = URL("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=$latitude,$longitude&radius=500&type=restaurant&key=$apiKey")
+                val apiKey = "AIzaSyDzE7aySfu7ktU9xvtW03gfR5L_I7Im_sI"
+                val url = URL("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.96923825525475,25.626851016208736&radius=500&type=restaurant&key=AIzaSyDzE7aySfu7ktU9xvtW03gfR5L_I7Im_sI")
                 val connection = url.openConnection() as HttpURLConnection
+                //connection.requestMethod = "GET"
                 connection.setRequestProperty("Accept", "application/json")
 
                 val json = connection.inputStream.bufferedReader().readText()
-                val location = Gson().fromJson(json, LocationDetailsList::class.java)
-                val output = location.search.map { it.places }
+                val location = Gson().fromJson(json, LocationDetails::class.java)
+                val output = location.name
 
                 Handler(Looper.getMainLooper()).post {
-                    val listView = findViewById<ListView>(R.id.LSPlaces)
+                    /*val listView = findViewById<ListView>(R.id.LSPlaces)
 
                     val adapter = ArrayAdapter(
                         this,
                         android.R.layout.simple_list_item_1,
                         output
                     )
-                    listView.adapter = adapter
+                    listView.adapter = adapter*/
+                    txtName = findViewById(R.id.txtNameOutput)
+                    txtName.text = output
                 }
             } catch (e: Exception) {
                 Handler(Looper.getMainLooper()).post {
@@ -135,4 +145,5 @@ class MainActivity : AppCompatActivity(), LocationListener {
             }
         }
     }
+
 }
