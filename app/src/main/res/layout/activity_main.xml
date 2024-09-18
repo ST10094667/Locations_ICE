@@ -36,6 +36,7 @@
         android:id="@+id/LSPlaces"
         android:layout_width="352dp"
         android:layout_height="340dp"
+        android:background="#E4D5D5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
