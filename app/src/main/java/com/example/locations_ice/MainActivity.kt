@@ -88,7 +88,7 @@ class MainActivity : AppCompatActivity(), LocationListener {
         txtlocation = findViewById(R.id.txtOutput)
         val latitude = location.latitude
         val longitude = location.longitude
-        txtlocation.text = "Latitude: $latitude, \nLongitude: $longitude"
+        //txtlocation.text = "Latitude: $latitude, \nLongitude: $longitude"
         //getNearbyPlaces()
 
     }
