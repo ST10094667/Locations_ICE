@@ -10,6 +10,7 @@ material = "1.12.0"
 activity = "1.9.2"
 constraintlayout = "2.1.4"
 places = "3.5.0"
+playServicesDtdi = "16.0.0-beta02"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -21,6 +22,7 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 places = { group = "com.google.android.libraries.places", name = "places", version.ref = "places" }
+play-services-dtdi = { group = "com.google.android.gms", name = "play-services-dtdi", version.ref = "playServicesDtdi" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

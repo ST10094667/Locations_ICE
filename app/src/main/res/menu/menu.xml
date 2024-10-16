@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_business"
+        android:title="Business"
+        android:enabled="true"
+        android:icon="@drawable/baseline_local_hospital_24"
+        android:iconTint="@color/blue_dark"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/action_store"
+        android:enabled="true"
+        android:title="Store"
+        android:icon="@drawable/baseline_account_balance_24"
+        android:iconTint="@color/blue_dark"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/action_gas"
+        android:enabled="true"
+        android:title="Gas-Station"
+        android:icon="@drawable/baseline_local_atm_24"
+        android:iconTint="@color/blue_dark"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/action_restaurant"
+        android:enabled="true"
+        android:title="Restaurant"
+        android:icon="@drawable/baseline_restaurant_24"
+        android:iconTint="@color/blue_dark"
+        app:showAsAction="ifRoom"/>
+</menu>
